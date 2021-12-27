@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
-import { getId } from './getId';
+import { GetId } from './getId';
 import { Input } from './report';
 import { Toast } from './toast';
-import { getRecords } from './getRecords';
+import { GetRecords } from './getRecords';
 import axios from 'axios'; // 引入axios库
-function me() {
+import './me.less';
+
+function Me() {
     const [text, setText] = useState('');
     const [toast, setToast] = useState(false);
     const [show, setShow] = useState(false);
+
     return (
-        <div>
+        <div className="container">
             {toast ? <Toast /> : null}
-            <div className="container">
+            <div>
                 <h1 id="title">我的</h1>
-                <div style={{ display: 'flex', justifyContent: 'center' }}>{getId}</div>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <GetId />
+                </div>
                 <div className="records">
                     <h2>浏览记录</h2>
-                    {getRecords}
+                    <GetRecords />
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <h1>意见反馈:</h1>
@@ -44,7 +49,7 @@ const Submit = function Submit(props: any) {
     const content = props.text;
     axios({
         method: 'POST',
-        url: '/getRecord',
+        url: 'http://www.hexiechuangxin.com/getRecord',
         params: {
             id: Number(localStorage.getItem('id')),
             msg: content,
@@ -55,4 +60,4 @@ const Submit = function Submit(props: any) {
     return <div></div>;
 };
 
-export { me };
+export { Me };

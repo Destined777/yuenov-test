@@ -6,11 +6,11 @@ type StateType = {
     isLoaded: boolean;
 };
 
-export interface getRecords {
+export interface GetRecords {
     state: StateType;
 }
 
-export class getRecords extends React.Component {
+export class GetRecords extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,7 +23,7 @@ export class getRecords extends React.Component {
         const _this = this;
         axios({
             method: 'GET',
-            url: '/getRecord',
+            url: 'http://www.hexiechuangxin.com/getRecord',
             params: {
                 id: userId,
             },
